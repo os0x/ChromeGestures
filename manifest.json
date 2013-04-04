@@ -1,0 +1,36 @@
+{
+  "background": {
+    "scripts": [ "js/TabUtils.js", "js/background.js" ],
+    "persistent": false
+  },
+   "content_scripts": [ {
+      "js": ["js/chrome_gestures.js" ],
+      "matches": [ "http://*/*", "https://*/*" ],
+      "run_at": "document_start",
+      "all_frames":true
+   },{
+      "js": ["js/chrome_gestures.js" ],
+      "matches": [ "http://*/*", "https://*/*" ],
+      "run_at": "document_end",
+      "all_frames":true
+   } ],
+   "default_locale": "en_US",
+   "description": "Mouse Gestures for Google Chrome\u2122",
+   "icons": {
+      "128": "gm_icon_128.png",
+      "16": "gm_icon_16.png",
+      "32": "gm_icon_32.png",
+      "64": "gm_icon_64.png"
+   },
+  "web_accessible_resources": [
+    "up.png",
+    "right.png",
+    "left.png",
+    "down.png"
+  ],
+   "name": "Gestures for Google Chrome\u2122",
+   "permissions": [ "tabs", "http://*/", "clipboardWrite" ],
+   "options_page": "options_page.html",
+   "version": "1.13.1",
+   "manifest_version": 2
+}
