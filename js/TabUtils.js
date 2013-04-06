@@ -47,6 +47,11 @@ TabUtils.actions = {
     });
   },
   close_tab: function (tab) {
+    if (!tab.pinned) {
+      chrome.tabs.remove(tab.id);
+    }
+  },
+  force_close_tab: function (tab) {
     chrome.tabs.remove(tab.id);
   },
   open_window: function (tab) {
@@ -111,7 +116,7 @@ TabUtils.actions = {
   close_other_tabs: function (tab) {
     chrome.tabs.getAllInWindow(tab.windowId, function (tabs) {
       tabs.forEach(function (_t, i) {
-        if (_t.id !== tab.id) {
+        if (_t.id !== tab.id && !_t.pinned) {
           chrome.tabs.remove(_t.id);
         }
       });
@@ -120,7 +125,7 @@ TabUtils.actions = {
   close_right_tabs: function (tab) {
     chrome.tabs.getAllInWindow(tab.windowId, function (tabs) {
       tabs.reverse().some(function (_t, i) {
-        if (_t.id !== tab.id) {
+        if (_t.id !== tab.id && !_t.pinned) {
           chrome.tabs.remove(_t.id);
         } else {
           return true;
@@ -131,7 +136,7 @@ TabUtils.actions = {
   close_left_tabs: function (tab) {
     chrome.tabs.getAllInWindow(tab.windowId, function (tabs) {
       tabs.some(function (_t, i) {
-        if (_t.id !== tab.id) {
+        if (_t.id !== tab.id && !_t.pinned) {
           chrome.tabs.remove(_t.id);
         } else {
           return true;
