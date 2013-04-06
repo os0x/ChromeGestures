@@ -31,6 +31,6 @@
    "name": "Gestures for Google Chrome\u2122",
    "permissions": [ "tabs", "http://*/", "clipboardWrite" ],
    "options_page": "options_page.html",
-   "version": "1.13.1",
+   "version": "1.13.2",
    "manifest_version": 2
 }
