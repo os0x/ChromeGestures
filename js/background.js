@@ -508,5 +508,6 @@ function get_manifest(callback) {
 }
 window.addEventListener('load', function () {
   clipNode = document.createElement('textarea');
+  document.body.appendChild(clipNode);
   clipRange = document.createRange();
 }, false);
